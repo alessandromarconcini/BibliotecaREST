@@ -1,0 +1,39 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.google.guava:guava:31.1-jre'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    testImplementation 'io.rest-assured:rest-assured:5.0.1'
+    implementation 'org.testng:testng:7.5'
+    testImplementation 'io.rest-assured:json-path:5.0.1'
+    testImplementation 'io.rest-assured:xml-path:5.0.1'
+    //testCompile group: 'junit', name: 'junit', version: '4.13'
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.3'
+    implementation 'com.google.code.gson:gson:2.9.0'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.named('processResources') {
+    expand(project.properties)
+}
